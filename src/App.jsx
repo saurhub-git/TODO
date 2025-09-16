@@ -4,7 +4,7 @@ import "./index.css";
 function App() {
   const currentSavedItems = JSON.parse(localStorage.getItem("items"));
   const [items, setItems] = useState(
-    currentSavedItems.length > 0 ? currentSavedItems : []
+    currentSavedItems ? currentSavedItems : []
   );
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
