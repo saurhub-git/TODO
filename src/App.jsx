@@ -2,10 +2,14 @@ import { useState } from "react";
 import "./index.css";
 
 function App() {
-  const [items, setItems] = useState([]);
+  const currentSavedItems = JSON.parse(localStorage.getItem("items"));
+  const [items, setItems] = useState(
+    currentSavedItems.length > 0 ? currentSavedItems : []
+  );
   function handleAddItems(item) {
     setItems((items) => [...items, item]);
   }
+  localStorage.setItem("items", JSON.stringify(items));
 
   function handleDeleteItem(id) {
     setItems((items) => items.filter((item) => item.id !== id));
