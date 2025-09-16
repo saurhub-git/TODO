@@ -38,7 +38,7 @@ function App() {
 }
 
 function Logo() {
-  return <h1>🌴 Far Away 🎒</h1>;
+  return <h1>📚 TODO 🎒</h1>;
 }
 function Form({ onAddItems }) {
   const [description, setDescription] = useState("");
@@ -57,7 +57,7 @@ function Form({ onAddItems }) {
 
   return (
     <form className="add-form" onSubmit={handleSubmit}>
-      <h3>What do you need for your 😍 trip? </h3>
+      <h3>What do you want to do today? </h3>
       <select value={quantity} onChange={(e) => setQuantity(+e.target.value)}>
         {Array.from({ length: 20 }, (_, i) => i + 1).map((num) => (
           <option value={num} key={num}>
@@ -67,7 +67,7 @@ function Form({ onAddItems }) {
       </select>
       <input
         type="text"
-        placeholder="Item..."
+        placeholder="Task..."
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
