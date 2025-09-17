@@ -23,6 +23,14 @@ function App() {
     );
   }
 
+  function handleClearTasks() {
+    if (items.length === 0) return;
+    const confirmed = window.confirm(
+      "Are you sure you want delete all your tasks?"
+    );
+    if (confirmed) setItems([]);
+  }
+
   return (
     <div className="app">
       <Logo />
@@ -31,6 +39,7 @@ function App() {
         items={items}
         onDeleteItem={handleDeleteItem}
         onToggleItem={handleToggleItem}
+        onClearTask={handleClearTasks}
       />
       <Stats items={items} />
     </div>
@@ -76,7 +85,7 @@ function Form({ onAddItems }) {
   );
 }
 
-function PackingList({ items, onDeleteItem, onToggleItem }) {
+function PackingList({ items, onDeleteItem, onToggleItem, onClearTask }) {
   const [sortBy, setSortBy] = useState("input");
 
   let sortedItems;
@@ -111,6 +120,9 @@ function PackingList({ items, onDeleteItem, onToggleItem }) {
           <option value="description">Sort by description</option>
           <option value="packed">Sort by task status</option>
         </select>
+        <button className="" onClick={onClearTask}>
+          Clear task
+        </button>
       </div>
     </div>
   );
